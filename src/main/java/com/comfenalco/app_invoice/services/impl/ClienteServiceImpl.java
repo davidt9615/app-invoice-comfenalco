@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.comfenalco.app_invoice.repositories.ClienteRepository;
 import com.comfenalco.app_invoice.repositories.entities.Cliente;
+import com.comfenalco.app_invoice.repositories.entities.Region;
 import com.comfenalco.app_invoice.services.ClienteService;
 import com.comfenalco.app_invoice.utils.exceptions.ClienteNotFoundException;
 
@@ -69,6 +70,12 @@ public class ClienteServiceImpl implements ClienteService{
     @Transactional
     public void delete(Long id) {
         clienteRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Region> findAllRegiones() {
+        return clienteRepository.findAllRegiones();
     }
 
 }
